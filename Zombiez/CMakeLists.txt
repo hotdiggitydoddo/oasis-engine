@@ -1,14 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-project(oasis)
-
-option(GLFW_BUILD_DOCS OFF)
-option(GLFW_BUILD_EXAMPLES OFF)
-option(GLFW_BUILD_TESTS OFF)
-
-option(BUILD_CPU_DEMOS OFF)
-option(BUILD_EXTRAS OFF)
-option(BUILD_OPENGL3_DEMOS OFF)
-option(BUILD_UNIT_TESTS OFF)
+project(zombiez)
 
 if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
@@ -19,7 +10,7 @@ else()
     endif()
 endif()
 
-include_directories(include/Oasis/
+include_directories(../Oasis/include
         ../Dependencies/glad/include/
         ../Dependencies/glfw/include/
         ../Dependencies/glm/
@@ -29,11 +20,11 @@ file(GLOB VENDORS_SOURCES ../Dependencies/glad/src/glad.c)
 file(GLOB PROJECT_HEADERS include/Oasis/*.h)
 file(GLOB PROJECT_SOURCES src/*.cpp)
 file(GLOB PROJECT_SHADERS Shaders/*.comp
-                          Shaders/*.frag
-                          Shaders/*.geom
-                          Shaders/*.vert)
+        Shaders/*.frag
+        Shaders/*.geom
+        Shaders/*.vert)
 file(GLOB PROJECT_CONFIGS CMakeLists.txt
-                          Readme.md
+        Readme.md
         ../.gitattributes
         ../.gitignore
         ../.gitmodules)
@@ -44,12 +35,24 @@ source_group("src" FILES ${PROJECT_SOURCES})
 source_group("Vendors" FILES ${VENDORS_SOURCES})
 
 add_definitions(-DGLFW_INCLUDE_NONE
-                -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
-add_library(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
-                               ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
-                               ${VENDORS_SOURCES})
-target_link_libraries(${PROJECT_NAME} glfw
-                      ${GLFW_LIBRARIES} ${GLAD_LIBRARIES}
-                      LinearMath)
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+        -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
+        ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
+        ${VENDORS_SOURCES})
+
+target_link_libraries(${PROJECT_NAME} oasis glfw
+        ${GLFW_LIBRARIES} ${GLAD_LIBRARIES}
+        LinearMath)
