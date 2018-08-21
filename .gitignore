@@ -1,3 +1,5 @@
 cmake-build*/
 .DS_Store
 .idea/
+.vs/
+[Bb]uild/
