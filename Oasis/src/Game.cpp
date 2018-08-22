@@ -47,17 +47,38 @@ namespace Oasis
     {
         _isRunning = true;
 
+		double t = 0.0;
+		const double dt = 0.01;
+		double currentTime = 0.0;
+		double accumulator = 0.0;
+
         while (glfwWindowShouldClose(_glWindow) == false) {
             if (glfwGetKey(_glWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
                 glfwSetWindowShouldClose(_glWindow, true);
 
-            // Background Fill Color
-            glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
+			double newTime = glfwGetTime();
+			double frameTime = newTime - currentTime;
+			currentTime = newTime;
 
-            // Flip Buffers and Draw
-            glfwSwapBuffers(_glWindow);
-            glfwPollEvents();
-        }   glfwTerminate();
+			accumulator += frameTime;
+
+			while (accumulator >= dt)
+			{
+				Update(dt);
+				accumulator -= dt;
+				t += dt;
+			}
+
+			// Background Fill Color
+			glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			Render();
+
+			// Flip Buffers and Draw
+			glfwSwapBuffers(_glWindow);
+			glfwPollEvents();
+        }   
+		glfwTerminate();
     }
 }

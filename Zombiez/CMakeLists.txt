@@ -10,7 +10,8 @@ else()
     endif()
 endif()
 
-include_directories(../Oasis/include
+include_directories(include/
+		../Oasis/include
         ../Dependencies/glad/include/
         ../Dependencies/glfw/include/
         ../Dependencies/glm/
@@ -40,17 +41,17 @@ add_definitions(-DGLFW_INCLUDE_NONE
 
 
 
-
-
-
-
-
-
-
-
+		
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
         ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
         ${VENDORS_SOURCES})
 
 target_link_libraries(${PROJECT_NAME} oasis )
+
+
+add_custom_command(
+        TARGET zombiez POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+                ${CMAKE_CURRENT_SOURCE_DIR}/resources
+                $<TARGET_FILE_DIR:zombiez>/resources)

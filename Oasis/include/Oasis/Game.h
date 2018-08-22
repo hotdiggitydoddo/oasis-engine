@@ -12,9 +12,15 @@ namespace Oasis
         ~Game();
 
         virtual int Init();
-        virtual void Run();
+		void Run();
+
+		virtual void Update(float dt) = 0;
+		virtual void Render() = 0;
 
     private:
+		
+
+
         GLFWwindow* _glWindow;
         bool _isRunning;
         int _screenWidth, _screenHeight;

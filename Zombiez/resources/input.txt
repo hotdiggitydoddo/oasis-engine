@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="input"
+    targetNamespace="http://tempuri.org/input.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/input.xsd"
+    xmlns:mstns="http://tempuri.org/input.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+</xs:schema>
