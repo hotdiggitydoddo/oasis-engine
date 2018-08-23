@@ -1,5 +1,4 @@
 #include "ZombiezGame.h"
-#include <iostream>
 
 int main()
 {

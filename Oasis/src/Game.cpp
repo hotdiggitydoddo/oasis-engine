@@ -46,6 +46,7 @@ namespace Oasis
     void Game::Run()
     {
         _isRunning = true;
+		State = GameState::ACTIVE;
 
 		double t = 0.0;
 		const double dt = 0.01;

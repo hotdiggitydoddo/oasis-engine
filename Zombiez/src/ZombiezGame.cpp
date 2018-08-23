@@ -24,6 +24,7 @@ void ZombiezGame::Render()
 int ZombiezGame::Init()
 {
 	Game::Init();
-	auto t = Oasis::ResourceManager::LoadTexture("resources/textures/circle.png", true, "circle");
-
+	auto t = Oasis::ResourceManager::LoadTexture("resources\\textures\\circle.png", true, "circle");
+	printf("%d\n", t->Width);
+		return 0;
 }

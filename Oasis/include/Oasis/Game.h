@@ -5,6 +5,12 @@
 
 namespace Oasis
 {
+	enum class GameState
+	{
+		ACTIVE,
+		MENU
+	};
+
     class Game
     {
     public:
@@ -17,6 +23,8 @@ namespace Oasis
 		virtual void Update(float dt) = 0;
 		virtual void Render() = 0;
 
+		GameState State;
+
     private:
 		
 
@@ -26,4 +34,6 @@ namespace Oasis
         int _screenWidth, _screenHeight;
         std::string _title;
     };
+
+	
 }
