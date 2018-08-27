@@ -9,7 +9,7 @@ namespace Oasis
 		_position = pos;
 		_texture = ResourceManager::LoadTexture(texturePath.c_str(), true, "");
 	}
-
+	
 	void Drawable::Draw(SpriteBatch& spriteBatch)
 	{
 		glm::mat4 model;
@@ -21,10 +21,10 @@ namespace Oasis
 		model = glm::scale(model, glm::vec3(_scale, _scale, 1.0f));
 		
 
-		glm::vec4 pos((_position.x), (_position.y), _texture.width * _scale, _texture.height * _scale);
+		glm::vec4 pos((_position.x), (_position.y), _texture->Width * _scale, _texture->Height * _scale);
 		glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
 
-		spriteBatch.Draw(pos, uv, _texture.ID, 0.0f, _color);
+		spriteBatch.Draw(pos, uv, _texture->ID, 0.0f, _color);
 	}
 
 	Drawable::Drawable()
@@ -34,7 +34,7 @@ namespace Oasis
 
 	glm::vec2 Drawable::GetOrigin() const
 	{
-		return glm::vec2((_texture.width / 2) * _scale, (_texture.height / 2) * _scale);
+		return glm::vec2((_texture->Width / 2) * _scale, (_texture->Height / 2) * _scale);
 	}
 
 }
